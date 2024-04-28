@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block header %}
+<h1>{% block title %}Produkt Detaljer{% endblock %}</h1>
+{% endblock %} {% block content %}
+<section class="product">
+  <h1>{{ product['name'] }}</h1>
+
+  <img class="product__image" src="" alt="" />
+
+  <p class="product__description">{{ product['description'] }}</p>
+  <p class="product_price">{{ product['price'] }}</p>
+
+  {% if g.user %}
+  <a class="action" href="{{ url_for('product.update', id=product['id']) }}"
+    >Edit</a
+  >
+  {% endif %}
+</section>
+{% endblock %}

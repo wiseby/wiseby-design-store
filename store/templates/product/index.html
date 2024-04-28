@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Produkter{% endblock %}</h1>
+  {% if g.user %}
+    <a class="action" href="{{ url_for('product.create') }}">Skapa ny produkt</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <section class="product">
+  {% for product in products %}
+    <article class="product__card">
+      <a href="{{ url_for('product.get_details', id=product['id']) }}">
+        <figure class="product__image">
+          <img src="/static/images/baby_yoda.jpg" alt="">
+        </figure>
+        <h3>{{ product['name'] }}</h3>
+      </a>
+        
+        <div class="product__info">
+          <p class="product__description">{{ product['description'] }}</p>
+          <p class="product__price">{{ product['price'] }}</p>
+        </div>
+    </article>
+  {% endfor %}
+  </section>
+{% endblock %}
