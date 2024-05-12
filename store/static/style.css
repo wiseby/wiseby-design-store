@@ -192,3 +192,19 @@ article > h3 {
       width: 100%; /* Single card per row on mobile */
   }
 }
+
+/* Media section */
+
+section > article.image__card {
+  display: flex;
+  flex-direction: row;
+}
+
+article > figure.image__image {
+  width: 100px;
+}
+
+.image__image img {
+  width: 100%;
+  height: auto;
+}

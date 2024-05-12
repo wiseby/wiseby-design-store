@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Media{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <section class="media">
+  {% for image in images %}
+    <article class="image__card">
+        <figure class="image__image">
+            <img src="/static/images/uploads/{{ image.name }}" alt="{{ image.alt_text }}">
+        </figure>
+        
+        <div class="media__info">
+          <p>{{ image.id }}</p>
+          <p>{{ image.name }}</p>
+          <p>{{ image.alt_text }}</p>
+          <p>{{ image.created }}</p>
+        </div>
+
+        <div class="media__action">
+            
+        <a class="action" href="{{ url_for('media.update', id=image['id']) }}">
+            Edit
+        </a>
+        </div>
+    </article>
+  {% endfor %}
+  </section>
+{% endblock %}

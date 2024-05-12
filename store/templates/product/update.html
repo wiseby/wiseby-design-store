@@ -17,8 +17,23 @@
     <input name="price" id="price"
       value="{{ request.form['price'] or product['price'] }}" required>  
       
+    
+    <label for="images">Bilder</label>
+    <select name="images" id="images" multiple>
+      {% for image in images %}
+        <option selected="{{ image['name'] in product['images'] }}" value="{{ image['name'] }}">{{ image['name'] }}</option>
+      {% endfor %}
+    </select>
+
+    
     <input type="submit" value="Spara">
   </form>
+
+  <form action="/media?redirect_url={{ request.url }}" method=post enctype=multipart/form-data >
+    <input type=file name=file>
+    <input type=submit value=Upload>
+  </form>
+  
   <hr>
   <form action="{{ url_for('product.delete', id=product['id']) }}" method="post">
     <input class="danger" type="submit" value="Delete" onclick="return confirm('Är du säker på att du vill ta bort produkten?');">
