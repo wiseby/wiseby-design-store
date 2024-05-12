@@ -6,22 +6,28 @@ html {
 body {
   max-width: 960px;
   margin: 0 auto;
-  background: white;
+  background: #fff;
+  font-family: 'Reddit Sans';
+  color: #171717;
 }
 h1 {
-  font-family: serif;
-  color: #377ba8;
   margin: 1rem 0;
 }
 a {
-  color: #377ba8;
+  text-decoration: none;
+}
+a:visited {
+  color: inherit;
+}
+a:hover {
+  color: #3690ff;
 }
 hr {
   border: none;
-  border-top: 1px solid lightgray;
+  border-top: 1px solid #58427C;
 }
 nav {
-  background: lightgray;
+  background: #ffa915;
   display: flex;
   align-items: center;
   padding: 0 0.5rem;
@@ -29,6 +35,7 @@ nav {
 nav h1 {
   flex: auto;
   margin: 0;
+  text-align: center;
 }
 nav h1 a {
   text-decoration: none;
@@ -124,11 +131,17 @@ section > article.product__card {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-color: #ffb570;
+  background-color: #f9f9f9;
   padding: 20px;
   border-radius: 10px;
   width: calc(33.33% - 20px); /* Three cards per row (minus spacing) */
   max-width: 40rem;
+}
+
+article.product__card > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 p.product__price {
@@ -144,7 +157,7 @@ p.product__description {
 }
 
 figure.product__image {
-  width: 100%;
+  width: fit-content;
   height: 15rem;
   display: flex;
   align-items: center;
@@ -190,6 +203,10 @@ article > h3 {
 @media (max-width: 600px) {
   section > article.product__card {
       width: 100%; /* Single card per row on mobile */
+  }
+
+  figure.product__image {
+    height: 20rem;
   }
 }
 
