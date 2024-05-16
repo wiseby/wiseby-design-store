@@ -65,13 +65,15 @@ def get_products():
 
 
 def get_product(id):
-    return get_db().execute(
+    product = get_db().execute(
         'SELECT id, name, description, created, price'
         ' FROM product'
         ' WHERE id = ?'
         ' ORDER BY id',
         (id,)
     ).fetchone()
+
+    return Product(id=product['id'], name=product['name'], description=product['description'], price=product['price'], created=product['created'])
 
 
 def create_product(product):

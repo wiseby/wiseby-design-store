@@ -7,7 +7,7 @@ body {
   max-width: 960px;
   margin: 0 auto;
   background: #fff;
-  font-family: 'Reddit Sans';
+  font-family: "Reddit Sans";
   color: #171717;
 }
 h1 {
@@ -24,7 +24,7 @@ a:hover {
 }
 hr {
   border: none;
-  border-top: 1px solid #58427C;
+  border-top: 1px solid #58427c;
 }
 nav {
   background: #ffa915;
@@ -202,7 +202,7 @@ article > h3 {
 /* Media query for mobile */
 @media (max-width: 600px) {
   section > article.product__card {
-      width: 100%; /* Single card per row on mobile */
+    width: 100%; /* Single card per row on mobile */
   }
 
   figure.product__image {
@@ -224,4 +224,93 @@ article > figure.image__image {
 .image__image img {
   width: 100%;
   height: auto;
+}
+
+/* Product Details Section */
+
+.product-detail h2 {
+  margin-top: 0;
+}
+
+section.product-detail {
+  display: flex;
+  flex-direction: row;
+}
+
+section > figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 50vw;
+}
+
+div.product-detail__lightbox-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div.product-detail__lightbox {
+  z-index: 999;
+  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.8s 0.8s, max-height 0.8s;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.product-detail__lightbox-image {
+  max-height: 400px;
+}
+
+.lightbox-toggle:checked ~ .product-detail__lightbox {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.8s, max-height 0.8s 0.8s;
+  max-height: fit-content;
+}
+
+div.product-detail__thumbnails {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow: scroll;
+}
+
+div.product-detail__thumbnails > label {
+  display: flex;
+  align-items: center;
+  border: #e6e6e6 solid 1px;
+  border-radius:5px;
+  padding: 5px;
+  margin: 5px;
+}
+
+div.product-detail__thumbnails > label:hover {
+  cursor: pointer;
+}
+
+div.product-detail__thumbnails > label > img {
+  border-radius: 5px;
+  height: 100px;
+}
+
+article.product-detail__information {
+  background-color: #f9f9f9;
+  padding: 10px;
+  margin: 10px;
+}
+
+p.product-detail__description {
+  margin: 0;
+}
+
+p.product-detail__price {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.lightbox-toggle {
+  display: none;
 }
