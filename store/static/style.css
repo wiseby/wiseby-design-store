@@ -133,7 +133,6 @@ section > article.product__card {
   box-sizing: border-box;
   background-color: #f9f9f9;
   padding: 20px;
-  border-radius: 10px;
   width: calc(33.33% - 20px); /* Three cards per row (minus spacing) */
   max-width: 40rem;
 }
@@ -162,7 +161,6 @@ figure.product__image {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
   overflow: hidden;
   margin: 0;
 }
@@ -282,7 +280,6 @@ div.product-detail__thumbnails > label {
   display: flex;
   align-items: center;
   border: #e6e6e6 solid 1px;
-  border-radius:5px;
   padding: 5px;
   margin: 5px;
 }
@@ -292,7 +289,6 @@ div.product-detail__thumbnails > label:hover {
 }
 
 div.product-detail__thumbnails > label > img {
-  border-radius: 5px;
   height: 100px;
 }
 
