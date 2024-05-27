@@ -1,8 +1,8 @@
-from flask import (Blueprint, abort, flash, redirect, render_template, request, url_for, )
+from flask import (Blueprint, flash, redirect, render_template, request, url_for, )
 from store import media
 
 from store.auth import login_required
-from store.db import create_product, delete_product, get_db, get_product, get_product_images, get_products, update_product
+from store.db import create_product, delete_product, get_product, get_product_images, get_products, update_product
 from store.models.product import Image, Product
 
 bp = Blueprint('product', __name__)

@@ -1,15 +1,57 @@
+:root {
+  --orange: #ffa915;
+  --hover: #df8d00;
+  --dark-delimiter: #58427c;
+  --light-delimiter: #ffffff;
+  --dark-brown: #442c2c;
+  --light-text: #ffffff;
+  --light-background: #ffffff;
+  --dark-text: #171717;
+  --fullwidth: 100%;
+}
+
+
 html {
-  font-family: sans-serif;
   background: #eee;
   padding: 1rem;
 }
 body {
   max-width: 960px;
   margin: 0 auto;
-  background: #fff;
+  background: var(--light-background);
   font-family: "Reddit Sans";
-  color: #171717;
+  color: var(--dark-text);
 }
+
+footer {
+  padding: 20px;
+  color: var(--light-text);
+  background-color: var(--dark-brown);
+}
+
+footer > section {
+  padding-bottom: 20px;
+}
+
+section.footer__info {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+section.footer__info td {
+  width: 100px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
+
+section.footer__copy {
+  border-top: 1px solid var(--light-delimiter);
+  padding: 10px;
+  text-align: center;
+}
+
 h1 {
   margin: 1rem 0;
 }
@@ -24,20 +66,20 @@ a:hover {
 }
 
 button {
-  background-color: #ffa915;
+  background-color: var(--orange);
   padding: 10px 20px;
   text-align: center;
   border: none;
 }
 
 button:hover {
-  background-color: #df8d00;
+  background-color: var(--hover);
   cursor: pointer;
 }
 
 hr {
   border: none;
-  border-top: 1px solid #58427c;
+  border-top: 1px solid var(--light-delimiter);
 }
 nav {
   background: #ffa915;

@@ -5,21 +5,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
 
-  <title>{% block title %}{% endblock %} - Wiseby Design</title>
+  <title>Wiseby Design</title>
 </head>
 <body>
-
-  <nav>
-    <h1>Wiseby Design</h1>
-    <ul>
-      <li><a href="{{ url_for('product.index') }}">Produkter</a></li>
-      <li><a href="{{ url_for('blog.index') }}">Artiklar</a></li>
-      {% if g.user %}
-      <li><span>{{ g.user['username'] }}</span>
-        <li><a href="{{ url_for('auth.logout') }}">Logga ut</a>
-      {% endif %}
-    </ul>
-  </nav>
+  <header>
+    {% include "header.html" %}
+  </header>
+  
   <main class="content">
     <header>
       {% block header %}{% endblock %}
@@ -29,4 +21,8 @@
     {% endfor %}
     {% block content %}{% endblock %}
   </main>
+  
+  <footer>
+    {% include "footer.html" %}
+  </footer>
 </body>
