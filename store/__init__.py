@@ -2,6 +2,9 @@ import os
 
 from flask import Flask
 
+from flask_ckeditor import CKEditor
+ckeditor = CKEditor()
+
 
 def create_app(test_config=None):
     # create and configure the app
@@ -10,6 +13,8 @@ def create_app(test_config=None):
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'store.sqlite'),
     )
+
+    ckeditor.init_app(app)
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
