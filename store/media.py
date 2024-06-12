@@ -8,7 +8,7 @@ from store.models.product import Image
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = os.path.join(app.root_path , 'static/images/uploads')
+app.config['UPLOAD_FOLDER'] = os.path.join(app.instance_path , 'files/images/products')
 
 bp = Blueprint('media', __name__, url_prefix='/media')
 

@@ -84,8 +84,6 @@ def create_product(product):
         (product.name, product.description, product.price,)
     )
     db.commit()
-
-    update_images(product.images)
     
 
 def update_product(id, product):

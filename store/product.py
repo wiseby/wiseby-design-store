@@ -37,7 +37,7 @@ def create():
             name=request.form['name'], 
             description=request.form['description'], 
             price=request.form['price'],
-            images=request.form.lists['images'])
+            images=request.form.getlist('images'))
 
         error = None
 

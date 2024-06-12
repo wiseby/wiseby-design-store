@@ -40,4 +40,7 @@ def create_app(test_config=None):
     from . import media
     app.register_blueprint(media.bp)
 
+    from . import images
+    app.register_blueprint(images.bp)
+
     return app
