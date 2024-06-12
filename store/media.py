@@ -42,7 +42,7 @@ def index():
     db_images = get_images()
     images = []
     if db_images is not None:
-        images = [Image(image['id'], image['name'], image['alt_text'], image['created']) for image in db_images]
+        images = [Image(image) for image in db_images]
 
     return render_template('media/index.html', images=images)
 

@@ -8,8 +8,9 @@ class Product:
         self.images = images
 
 class Image:
-    def __init__(self, id, name, alt_text, created):
-        self.id = id
-        self.name = name
-        self.alt_text = alt_text
-        self.created = created
+    def __init__(self, image):
+        self.id = image['id']
+        self.name = image['name']
+        self.source = image['source']
+        self.alt_text = image['alt_text']
+        self.created = image['created']

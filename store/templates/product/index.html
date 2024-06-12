@@ -14,14 +14,14 @@
       <a href="{{ url_for('product.get_details', id=product.id) }}">
         {% if product.images|length > 0 %}
           <figure class="product__image">
-            <img src="{{ url_for('images.index', filename=product.images[0].name) }}" alt="{{product.images[0].alt_text}}">
+            <img src="{{ url_for('images.index', filename=product.images[0].source) }}" alt="{{product.images[0].alt_text}}">
           </figure>
         {% endif %}
         <h3>{{ product['name'] }}</h3>
       </a>
         
         <div class="product__info">
-          <p class="product__description">{{ product.description }}</p>
+          <p class="product__description">{{ product.short_description }}</p>
           <p class="product__price">{{ product.price }}</p>
         </div>
     </article>

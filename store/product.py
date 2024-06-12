@@ -14,7 +14,7 @@ def index():
 
     for product in products:
         images = get_product_images(product.id)
-        product.images = [Image(image['id'], image['name'], image['alt_text'], image['created']) for image in images]
+        product.images = [Image(image) for image in images]
             
     return render_template('product/index.html', products=products)
 
@@ -23,9 +23,7 @@ def index():
 def get_details(id):
     product = get_product(id)
     images = get_product_images(product.id)
-    product.images = [Image(image['id'], image['name'], image['alt_text'], image['created']) for image in images]
-            
-
+    product.images = [Image(image) for image in images]
     return render_template('product/details.html', product=product)
 
 

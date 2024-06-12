@@ -94,7 +94,7 @@ def update_product(id, product):
         (product.name, product.description, product.price, id,)
     )
     db.commit()
-    update_images(product.images, id)
+    update_product_images(product.images, id)
 
 
 def delete_product(id):
@@ -123,7 +123,7 @@ def get_image(name):
     ).fetchone()
 
 
-def update_images(images, id):
+def update_product_images(images, id):
     if len(images) == 0:
         return
     
@@ -145,22 +145,24 @@ def update_images(images, id):
         db.commit()
 
 
-def save_image(name, alt_text):
+def save_image(source, name=None, alt_text=''):
+    if name is None:
+        name = source
     db = get_db()
     db.execute(
-        'INSERT INTO image (name, alt_text)'
-        ' VALUES (?, ?)',
-        (name, alt_text,)
+        'INSERT INTO image (source, name, alt_text)'
+        ' VALUES (?, ?, ?)',
+        (source, name, alt_text,)
     )
     db.commit()
 
 
-def save_file(name, description):
+def save_file(name, description, source):
     db = get_db()
     db.execute(
-        'INSERT INTO image (name, description)'
-        ' VALUES (?, ?)',
-        (name, description,)
+        'INSERT INTO file (name, source, description)'
+        ' VALUES (?, ?, ?)',
+        (name, description, source, )
     )
     db.commit()
 
@@ -168,7 +170,7 @@ def save_file(name, description):
 def get_images():
     db = get_db()
     return db.execute(
-        'SELECT id, name, alt_text, created'
+        'SELECT id, source, name, alt_text, created'
         ' FROM image'
     ).fetchall()
     
