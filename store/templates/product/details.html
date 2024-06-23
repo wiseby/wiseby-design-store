@@ -18,7 +18,7 @@
           <label for="{{ image.name }}-radio">
             <img
               class="product-detail__lightbox-image"
-              src="{{ url_for("images.index", filename=image.source) }}"
+              src="{{ url_for("images.index", source=image.source) }}"
               alt="{{ image.alt_text }}"
             />
           </label>
@@ -31,7 +31,7 @@
         {% for image in product.images %}
         <label for="{{ image.name }}-radio">
           <img
-            src="{{ url_for("images.index", filename=image.source) }}"
+            src="{{ url_for("images.index", source=image.source) }}"
             alt="{{ image.alt_text }}"
           />
         </label>
@@ -46,7 +46,7 @@
     <p class="product-detail__price">Pris: {{ product.price }}</p>
     <button>Beställ</button>
     <h3>Beskrivning:</h3>
-    <p class="product-detail__description">{{ product.description }}</p>
+    <p class="product-detail__description">{{ product.description|safe }}</p>
   </article>
 
   {% if g.user %}

@@ -8,23 +8,23 @@
   <form method="post">
     <label for="name">Namn</label>
     <input name="name" id="name"
-      value="{{ request.form['name'] or product['name'] }}" required>
+      value="{{ request.form['name'] or product.name }}" required>
     
     <label for="short_description">Kort Beskrivning</label>
-    <textarea name="short_description" id="short_description">{{ request.form['short_description'] or product['short_description'] }}</textarea>
+    <textarea name="short_description" id="short_description">{{ request.form['short_description'] or product.short_description }}</textarea>
     
     <label for="description">Beskrivning</label>
-    {{ ckeditor.create("description", request.form['description'] or product['description']) }}  
+    {{ ckeditor.create("description", request.form['description'] or product.description) }}  
     
     <label for="price">Pris</label>
     <input name="price" id="price"
-      value="{{ request.form['price'] or product['price'] }}" required>  
+      value="{{ request.form['price'] or product.price }}" required>  
       
     
     <label for="images">Bilder</label>
     <select name="images" id="images" multiple>
       {% for image in images %}
-        <option selected="{{ image['name'] in product['images'] }}" value="{{ image['name'] }}">{{ image['name'] }}</option>
+        <option {{ "selected" if image.selected == True }} value="{{ image.source }}">{{ image.name }}</option>
       {% endfor %}
     </select>
 
@@ -38,7 +38,7 @@
   </form>
   
   <hr>
-  <form action="{{ url_for('product.delete', id=product['id']) }}" method="post">
+  <form action="{{ url_for('product.delete', id=product.id) }}" method="post">
     <input class="danger" type="submit" value="Delete" onclick="return confirm('Är du säker på att du vill ta bort produkten?');">
   </form>
 {% endblock %}

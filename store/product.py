@@ -31,11 +31,7 @@ def get_details(id):
 @login_required
 def create():
     if request.method == 'POST':
-        product = Product(
-            name=request.form['name'], 
-            description=request.form['description'], 
-            price=request.form['price'],
-            images=request.form.getlist('images'))
+        product = Product.BuildFromRequest(request)
 
         error = None
 
@@ -55,14 +51,17 @@ def create():
 @login_required
 def update(id):
     product = get_product(id)
-    images = media.get_images()
+    product_images = get_product_images(id)
+    product.images = [Image(image) for image in product_images]
+    images = [Image(image) for image in media.get_images()]
+
+    sourcesToSelect = [image.source for image in product.images]
+    for image in images:
+        image.selected = image.source in sourcesToSelect
+
 
     if request.method == 'POST':
-        product = Product(
-            name=request.form['name'], 
-            description=request.form['description'], 
-            price=request.form['price'],
-            images=request.form.getlist('images'))
+        product = Product.BuildFromRequest(request)
 
         error = None
 

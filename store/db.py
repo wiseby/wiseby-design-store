@@ -56,32 +56,35 @@ def init_app(app):
 def get_products():
     db = get_db()
     product_rows = db.execute(
-        'SELECT id, name, description, created, price'
+        'SELECT id, name, short_description, description, created, price'
         ' FROM product'
         ' ORDER BY id'
     ).fetchall()
 
-    return [Product(id=row['id'], name=row['name'], description=row['description'], price=row['price'], created=row['created']) for row in product_rows]
+    return [Product.BuildFromDict(row) for row in product_rows]
 
 
 def get_product(id):
     product = get_db().execute(
-        'SELECT id, name, description, created, price'
+        'SELECT id, name, short_description, description, created, price'
         ' FROM product'
         ' WHERE id = ?'
         ' ORDER BY id',
         (id,)
     ).fetchone()
 
-    return Product(id=product['id'], name=product['name'], description=product['description'], price=product['price'], created=product['created'])
+    return Product.BuildFromDict(product)
 
 
 def create_product(product):
     db = get_db()
     db.execute(
-        'INSERT INTO product (name, description, price)'
+        'INSERT INTO product (name, short_description, description, price)'
         ' VALUES (?, ?, ?)',
-        (product.name, product.description, product.price,)
+        (product.name, 
+         product.short_description, 
+         product.description, 
+         product.price,)
     )
     db.commit()
     
@@ -89,9 +92,13 @@ def create_product(product):
 def update_product(id, product):
     db = get_db()
     db.execute(
-        'UPDATE product SET name = ?, description = ?, price = ?'
+        'UPDATE product SET name = ?, short_description = ?, description = ?, price = ?'
         ' WHERE id = ?',
-        (product.name, product.description, product.price, id,)
+        (product.name, 
+         product.short_description, 
+         product.description, 
+         product.price, 
+         id,)
     )
     db.commit()
     update_product_images(product.images, id)
@@ -105,7 +112,7 @@ def delete_product(id):
 
 def get_product_images(id):
     return get_db().execute(
-        'SELECT id, name, alt_text, created'
+        'SELECT id, source, name, alt_text, created'
         ' FROM image'
         ' JOIN product_image ON image.id = product_image.image_id'
         ' WHERE product_image.product_id = ?',
@@ -116,7 +123,7 @@ def get_product_images(id):
 def get_image(name):
     db = get_db()
     return db.execute(
-        'SELECT id, name, alt_text, created'
+        'SELECT id, source, name, alt_text, created'
         ' FROM image'
         ' WHERE name = ?',
         (name,)
@@ -137,6 +144,9 @@ def update_product_images(images, id):
 
     for image_name in images:
         image = get_image(image_name)
+        if image == None:
+            return
+        
         db.execute(
             'INSERT INTO product_image (product_id, image_id)'
             ' VALUES (?, ?)',
@@ -146,7 +156,7 @@ def update_product_images(images, id):
 
 
 def save_image(source, name=None, alt_text=''):
-    if name is None:
+    if name == None or name == '':
         name = source
     db = get_db()
     db.execute(

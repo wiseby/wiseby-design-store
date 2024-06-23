@@ -23,6 +23,7 @@ CREATE TABLE product (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   name TEXT NOT NULL,
+  short_description Text,
   description TEXT NOT NULL,
   price NUMERIC
 );
@@ -31,6 +32,7 @@ CREATE TABLE image (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   name TEXT NOT NULL UNIQUE,
+  source TEXT NOT NULL UNIQUE,
   alt_text TEXT
 );
 
@@ -38,6 +40,7 @@ CREATE TABLE file (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   name TEXT NOT NULL UNIQUE,
+  source TEXT NOT NULL UNIQUE,
   description TEXT
 );
 
@@ -50,3 +53,4 @@ CREATE TABLE product_image (
     REFERENCES image (image_id),
   PRIMARY KEY (product_id, image_id)
 );
+

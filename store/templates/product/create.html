@@ -9,8 +9,11 @@
     <label for="name">Namn</label>
     <input name="name" id="name" value="{{ request.form['name'] }}" required>
     
+    <label for="short_description">Kort Beskrivning</label>
+    <textarea name="short_description" id="short_description">{{ request.form['short_description'] }}</textarea>
+    
     <label for="description">Beskrivning</label>
-    <textarea name="description" id="description">{{ request.form['description'] }}</textarea>
+    {{ ckeditor.create("description", request.form['description']) }}  
     
     <label for="price">Pris</label>
     <input name="price" id="price" value="{{ request.form['price'] }}" required>
