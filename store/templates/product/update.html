@@ -11,10 +11,14 @@
       value="{{ request.form['name'] or product.name }}" required>
     
     <label for="short_description">Kort Beskrivning</label>
-    <textarea name="short_description" id="short_description">{{ request.form['short_description'] or product.short_description }}</textarea>
+    <textarea name="short_description" id="short_description">
+        {{ request.form['short_description'] or product.short_description }}
+    </textarea>
     
     <label for="description">Beskrivning</label>
-    {{ ckeditor.create("description", request.form['description'] or product.description) }}  
+    <textarea name="description" id="description">
+        {{ request.form['description'] or product.description }}
+    </textarea> 
     
     <label for="price">Pris</label>
     <input name="price" id="price"

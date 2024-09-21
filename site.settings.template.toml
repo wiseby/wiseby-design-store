@@ -1,0 +1,13 @@
+[General]
+name = "Site Name"
+
+[Footer]
+copy-text = "Copyright Text"
+
+[CompanyDetails]
+address = ""
+email = ""
+order-email = ""
+org-number = ""
+vat-number = ""
+bank-transfer-number = ""

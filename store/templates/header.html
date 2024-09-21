@@ -6,8 +6,11 @@
     {% if g.user %}
     <li><span>{{ g.user['username'] }}</span></li>
     <li>
-      <a href="{{ url_for('auth.logout') }}">Logga ut</a>
-      {% endif %}
+        <a href="{{ url_for('media.index') }}">Media</a>
     </li>
+    <li>
+      <a href="{{ url_for('auth.logout') }}">Logga ut</a>
+    </li>
+    {% endif %}
   </ul>
 </nav>

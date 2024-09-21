@@ -9,7 +9,10 @@
   {% for image in images %}
     <article class="image__card">
         <figure class="image__image">
-            <img src="/static/images/uploads/{{ image.name }}" alt="{{ image.alt_text }}">
+            <img 
+                src="{{ url_for('images.index', source=image.source) }}"
+                alt="{{ image.alt_text }}"
+            >
         </figure>
         
         <div class="media__info">
@@ -21,7 +24,7 @@
 
         <div class="media__action">
             
-        <a class="action" href="{{ url_for('media.update', id=image['id']) }}">
+        <a class="action" href="{{ url_for('media.update', id=image.id) }}">
             Edit
         </a>
         </div>

@@ -50,10 +50,10 @@ def index():
 @bp.route('/<int:id>/update', methods=('GET', 'POST'))
 @login_required
 def update(id):
-    image = get_image(id)
-
     if request.method == 'POST':
-        update_image(id, request.form['alt_text'])
+        update_image(id, request.form['name'], request.form['alt_text'])
+
+    image = Image(get_image(id))
 
     return render_template('media/update.html', image=image)
 

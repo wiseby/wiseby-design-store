@@ -1,20 +1,19 @@
 import os
 
 from flask import Flask
-
-from flask_ckeditor import CKEditor
-ckeditor = CKEditor()
+import tomllib
 
 
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
+    
+    app.config.from_file("site.settings.toml", load=tomllib.load, text=False)
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'store.sqlite'),
     )
-
-    ckeditor.init_app(app)
+    print(app.config)
 
     if test_config is None:
         # load the instance config, if it exists, when not testing

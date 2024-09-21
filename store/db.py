@@ -80,7 +80,7 @@ def create_product(product):
     db = get_db()
     db.execute(
         'INSERT INTO product (name, short_description, description, price)'
-        ' VALUES (?, ?, ?)',
+        ' VALUES (?, ?, ?, ?)',
         (product.name, 
          product.short_description, 
          product.description, 
@@ -120,13 +120,23 @@ def get_product_images(id):
     ).fetchall()
 
 
-def get_image(name):
+def get_image_by_name(name):
     db = get_db()
     return db.execute(
         'SELECT id, source, name, alt_text, created'
         ' FROM image'
         ' WHERE name = ?',
         (name,)
+    ).fetchone()
+
+
+def get_image(id):
+    db = get_db()
+    return db.execute(
+        'SELECT id, source, name, alt_text, created'
+        ' FROM image'
+        ' WHERE id = ?',
+        (id,)
     ).fetchone()
 
 
@@ -185,9 +195,9 @@ def get_images():
     ).fetchall()
     
 
-def update_image(id, alt_text):
+def update_image(id, name, alt_text):
     db = get_db()
-    db.execute('UPDATE image SET alt_text = ? WHERE id = ?', (alt_text, id,))
+    db.execute('UPDATE image SET name = ?, alt_text = ? WHERE id = ?', (name, alt_text, id,))
     db.commit()
 
 

@@ -1,29 +1,32 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  <h1>{% block title %}Uppdatera "{{ image['name'] }}"{% endblock %}</h1>
+  <h1>{% block title %}Uppdatera "{{ image.name }}"{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
   
     <form method="post">
+        <img 
+          src="{{ url_for("images.index", source=image.source) }}" 
+          alt="{{ image.alt_text }}">
         <label for="id">Id</label>
         <input name="id" id="id"
-        value="{{ image['id'] }}" disabled >
+        value="{{ image.id }}" disabled >
         
         <label for="name">Name</label>
         <input name="name" id="name"
-        value="{{ image['name'] }}" disabled >
+        value="{{ image.name }}">
       
         <label for="name">Alt Text</label>
         <input name="alt_text" id="alt_text"
-        value="{{ request.form['alt_text'] or image['alt_text'] }}" >
+        value="{{ request.form['alt_text'] or image.alt_text }}" >
     
         <input type="submit" value="Spara">
     </form>    
   <hr>
 
-  <form action="{{ url_for('media.delete', id=image['id']) }}" method="post">
+  <form action="{{ url_for('media.delete', id=image.id) }}" method="post">
     <input class="danger" type="submit" value="Delete" onclick="return confirm('Är du säker på att du vill ta bort filen?');">
   </form>
 {% endblock %}
