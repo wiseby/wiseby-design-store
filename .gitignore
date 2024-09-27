@@ -1,6 +1,8 @@
 .venv/
 .env/
 
+**/.vscode
+
 *.pyc
 __pycache__/
 
@@ -15,3 +17,5 @@ htmlcov/
 dist/
 build/
 *.egg-info/
+
+**/*.log
