@@ -44,15 +44,34 @@
   <article class="product-detail__information">
     <h2>{{product.name}}</h2>
     <p class="product-detail__price">Pris: {{ product.price }}</p>
-    <button>Beställ</button>
+    <a class="button" href="#open-modal">Beställ</a>
+    {% if g.user %}
+      <a class="action button" href="{{ url_for('product.update', id=product.id) }}">Ändra</a>
+    {% endif %}
     <h3>Beskrivning:</h3>
     <p class="product-detail__description">{{ product.description|safe }}</p>
   </article>
 
-  {% if g.user %}
-  <a class="action" href="{{ url_for('product.update', id=product.id) }}"
-    >Edit</a
-  >
-  {% endif %}
 </section>
+
+<div id="open-modal" class="modal-window">
+  <div>
+    <h1>Beställa produkter</h1>
+    <p>
+      Vill du beställa produkter från oss så gör du det genom att skicka ett meddelande med förljande uppgifter:
+    </p>
+    <ul>
+      <li>En list med önskade produkter och antal</li>
+      <li>Förnamn och Efternamn</li>
+      <li>Adress för leverans</li>
+    </ul>
+
+    <p>Skicka dessa uppgifter till <a href="mailto:{{ config['COMPANYDETAILS'].orderemail }}">{{ config['COMPANYDETAILS'].orderemail }}</a></p>
+
+    <p>Kvittens och information om betalning kommer därefter.</p>
+    <br />
+    <a href="#" title="Close" class="button">Stäng</a>
+  </div>
+</div>
+
 {% endblock %}
