@@ -5,23 +5,23 @@
       <tbody>
         <tr>
           <td>Adress</td>
-          <td>Flårekulla 104 52375 Dalum Sweden</td>
+          <td>{{ config['COMPANYDETAILS'].address }}</td>
         </tr>
         <tr>
           <td>Epost</td>
-          <td>lucas.wiseby@wisebydesign.se</td>
+          <td>{{ config['COMPANYDETAILS'].email }}</td>
         </tr>
         <tr>
           <td>Org.nr</td>
-          <td>900618-5335</td>
+          <td>{{ config['COMPANYDETAILS'].orgnumber }}</td>
         </tr>
         <tr>
           <td>VAT-nr</td>
-          <td>SE900618533501</td>
+          <td>{{ config['COMPANYDETAILS'].vatnumber }}</td>
         </tr>
         <tr>
           <td>Bankgiro</td>
-          <td>520-9473</td>
+          <td>{{ config['COMPANYDETAILS'].banktransfernumber }}</td>
         </tr>
       </tbody>
     </table>
@@ -54,4 +54,4 @@
     </table>
   </article>
 </section>
-<section class="footer__copy">Copyright 2024 © WisebyDesign Sweden</section>
+<section class="footer__copy">{{ config['FOOTER'].copytext }}</section>

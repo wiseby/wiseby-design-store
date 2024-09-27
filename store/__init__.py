@@ -9,11 +9,11 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     
     app.config.from_file("site.settings.toml", load=tomllib.load, text=False)
+    print(app.config)
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'store.sqlite'),
     )
-    print(app.config)
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
