@@ -4,7 +4,7 @@ click==8.1.7
 colorama==0.4.6
 coverage==7.5.0
 Flask==3.0.3
-Flask-CKEditor==0.5.1
+Flask-WTF==1.2.1
 iniconfig==2.0.0
 itsdangerous==2.2.0
 Jinja2==3.1.3
@@ -15,4 +15,7 @@ pluggy==1.5.0
 pyproject_hooks==1.0.0
 pytest==8.1.1
 -e git+https://github.com/wiseby/wiseby-design-store.git@10abf94811a1c4e32e0c4e49f5f8a4494a3b112e#egg=store
+uWSGI==2.0.28
 Werkzeug==3.0.2
+wheel==0.45.1
+WTForms==3.1.2

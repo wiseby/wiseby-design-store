@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve store
+After=network.target
+
+[Service]
+User=lucas
+Group=www-data
+WorkingDirectory=/home/lucas/Projects/wiseby-design-store
+Environment="PATH=/home/lucas/Projects/wiseby-design-store/.venv/bin"
+ExecStart=/home/lucas/Projects/wiseby-design-store/.venv/bin/uwsgi --ini store.ini
+
+[Install]
+WantedBy=multi-user.target
