@@ -28,7 +28,7 @@
     <label for="images">Bilder</label>
     <select name="images" id="images" multiple>
       {% for image in images %}
-        <option {{ "selected" if image.selected == True }} value="{{ image.source }}">{{ image.name }}</option>
+        <option {{ "selected" if image.selected == True }} value="{{ image.id }}">{{ image.name }}</option>
       {% endfor %}
     </select>
 
