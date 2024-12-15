@@ -27,28 +27,19 @@
     </table>
   </article>
   <article class="footer__links">
-    <h2>Information</h2>
+    <h2>Admin</h2>
     <table>
       <tbody>
         <tr>
-          <td>
-            <a href="{{ url_for('auth.login') }}">Admin</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a href="{{ url_for('auth.logout') }}">Länk</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a href="{{ url_for('auth.logout') }}">Länk</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a href="{{ url_for('auth.logout') }}">Länk</a>
-          </td>
+          {% if not g.user %}
+            <td>
+              <a href="{{ url_for('auth.login') }}">Login</a>
+            </td>
+          {% else %}
+            <td>
+              <a href="{{ url_for('auth.logout') }}">Logout</a>
+            </td>
+          {% endif %}
         </tr>
       </tbody>
     </table>
