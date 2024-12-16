@@ -5,7 +5,7 @@ from store.auth import login_required
 from store.db import create_product, delete_product, get_product, get_product_images, get_products, update_product
 from store.models.product import Image, Product
 
-bp = Blueprint('product', __name__)
+bp = Blueprint('product', __name__, url_prefix='/products')
 
 
 @bp.route('/')
@@ -15,7 +15,7 @@ def index():
     for product in products:
         images = get_product_images(product.id)
         product.images = [Image(image) for image in images]
-            
+    
     return render_template('product/index.html', products=products)
 
 
@@ -58,7 +58,6 @@ def update(id):
     sourcesToSelect = [image.source for image in product.images]
     for image in images:
         image.selected = image.source in sourcesToSelect
-
 
     if request.method == 'POST':
         product = Product.BuildFromRequest(request)
