@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="landing-page">
+  <h1>Välkommen till Wiseby Design</h1>
+  <p>
+    Här hittar du unika produkter, kurser och tjänster. Letar du efter fördjupad kunskap så finner du den ibland några utav artiklarna i kunskapsbanken.
+  </p>
+  <div class="landing-page__navigation">
+   
+    <a href="{{ url_for('product.index') }}" class="button">Produkter</a>
+    <a href="{{ url_for('blog.index') }}" class="button">Kunskapsbanken</a> 
+  </div>
+
+</section>
+{% endblock %}

@@ -39,7 +39,6 @@ def create_app(test_config=None):
 
     from . import product
     app.register_blueprint(product.bp)
-    app.add_url_rule('/', endpoint='index')
 
     from . import media
     app.register_blueprint(media.bp)
@@ -47,4 +46,9 @@ def create_app(test_config=None):
     from . import images
     app.register_blueprint(images.bp)
 
+    from . import block
+    app.register_blueprint(block.bp)
+
+    app.add_url_rule('/', endpoint='index')
+    
     return app

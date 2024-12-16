@@ -12,8 +12,8 @@
 
 
 html {
-  background: #eee;
-  padding: 1rem;
+  padding: 0;
+  margin: 0;
 }
 body {
   max-width: 1150px;
@@ -56,10 +56,8 @@ h1 {
   margin: 1rem 0;
 }
 a {
+  color: var(--dark-text) 
   text-decoration: none;
-}
-a:visited {
-  color: inherit;
 }
 a:hover {
   color: #3690ff;
@@ -101,11 +99,6 @@ nav {
   align-items: center;
   padding: 0 0.5rem;
 }
-nav h1 {
-  flex: auto;
-  margin: 0;
-  text-align: center;
-}
 nav h1 a {
   text-decoration: none;
   padding: 0.25rem 0.5rem;
@@ -121,6 +114,12 @@ nav ul li span,
 header .action {
   display: block;
   padding: 0.5rem;
+}
+header .title {
+  flex: auto;
+  text-decoration: none;
+  margin: 0;
+  text-align: center;  
 }
 .content {
   padding: 0 1rem 1rem;
@@ -424,4 +423,31 @@ p.product-detail__price {
   figure.product__image {
     height: 20rem;
   }
+}
+
+/* Landing Page */
+.landing-page { 
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-page h1 {
+  font-size: 40px;
+  text-align: center;
+  margin: 0;
+}
+
+.landing-page p {
+  padding-left: 30%;
+  padding-right: 30%;
+  text-align: center;
+}
+
+.landing-page__navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+  padding-top: 1rem;
 }
