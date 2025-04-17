@@ -206,3 +206,27 @@ def delete_image(id):
     db.execute('DELETE FROM image WHERE id = ?', (id,))
     db.execute('DELETE FROM product_image WHERE image_id = ?', (id,))
     db.commit()
+
+
+def change_user_password(username, new_password):
+    db = get_db()
+    db.execute(
+        'UPDATE user SET password = ? WHERE username = ?',
+        (generate_password_hash(new_password), username)
+    )
+    db.commit()
+
+
+@click.command('change-password')
+@click.argument('username')
+@click.argument('new_password')
+def change_password_command(username, new_password):
+    """Change a user's password."""
+    change_user_password(username, new_password)
+    click.echo(f'Password changed for user {username}.')
+
+
+def init_app(app):
+    app.teardown_appcontext(close_db)
+    app.cli.add_command(init_db_command)
+    app.cli.add_command(change_password_command)
