@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <div class="post__header">
+    <div>
+      <h1>{{ post.title }}</h1>
+      <div class="post__about">{{ post.created.strftime('%Y-%m-%d') }}</div>
+    </div>
+    <div>
+      {% if g.user %}
+      <a class="action" href="{{ url_for('blog.update', id=post.id) }}">Edit</a>
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+<article class="post">
+    {{ post.body | safe }}
+  </article>
+{% endblock %}
