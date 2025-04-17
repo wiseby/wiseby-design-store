@@ -27,8 +27,8 @@ def close_db(e=None):
 
 
 def init_db():
-    username = 'admin'
-    password = '123'
+    username = current_app.config['ADMIN_NAME']
+    password = current_app.config['ADMIN_PASSWORD']
     db = get_db()
     
     with current_app.open_resource('schema.sql') as f:

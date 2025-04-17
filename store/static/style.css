@@ -2,7 +2,7 @@
   --orange: #ffa915;
   --hover: #cf9c42;
   --dark-delimiter: #58427c;
-  --light-delimiter: #ffffff;
+  --light-delimiter: #c7c7c7;
   --dark-brown: #442c2c;
   --light-text: #ffffff;
   --light-background: #ffffff;
@@ -92,6 +92,10 @@ button:hover {
 
 hr {
   border: none;
+  border-top: 1px solid var(--dark-delimiter);
+}
+
+hr.light {
   border-top: 1px solid var(--light-delimiter);
 }
 
@@ -135,7 +139,7 @@ header .title {
 }
 
 .content > header {
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid var(--dark-delimiter);
   display: flex;
   align-items: flex-end;
 }
@@ -152,28 +156,32 @@ header .title {
   border: 1px solid #377ba8;
 }
 
-.post > header {
+.post__header {
   display: flex;
-  align-items: flex-end;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1em;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.post__about {
+  color: slategray;
+  font-style: italic;
   font-size: 0.85em;
 }
 
-.post > header > div:first-of-type {
-  flex: auto;
-}
-
-.post > header h1 {
-  font-size: 1.5em;
+.post__header h1 {
   margin-bottom: 0;
-}
-
-.post .about {
-  color: slategray;
-  font-style: italic;
 }
 
 .post .body {
   white-space: pre-line;
+}
+
+.post img {
+  max-width: 100%;
 }
 
 .content:last-child {

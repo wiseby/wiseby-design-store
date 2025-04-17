@@ -1,5 +1,6 @@
 from flask import (Blueprint, flash, redirect, render_template, request, url_for, )
 from store import media
+from markdown import markdown
 
 from store.auth import login_required
 from store.db import create_product, delete_product, get_product, get_product_images, get_products, update_product
@@ -22,6 +23,7 @@ def index():
 @bp.route('/<int:id>')
 def get_details(id):
     product = get_product(id)
+    product.description = markdown(product.description)
     images = get_product_images(product.id)
     product.images = [Image(image) for image in images]
     return render_template('product/details.html', product=product)
@@ -40,6 +42,7 @@ def create():
 
         if error is not None:
             flash(error)
+
         else:
             create_product(product)
             return redirect(url_for('product.index'))
