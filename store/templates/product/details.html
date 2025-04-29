@@ -49,7 +49,7 @@
       <a class="action button" href="{{ url_for('product.update', id=product.id) }}">Ändra</a>
     {% endif %}
     <h3>Beskrivning:</h3>
-    <p class="product-detail__description">{{ product.description|safe }}</p>
+    <div class="product-detail__description">{{ product.description|safe }}</div>
   </article>
 
 </section>
