@@ -375,7 +375,7 @@ article.product-detail__information {
   margin: 10px;
 }
 
-p.product-detail__description {
+div.product-detail__description {
   margin: 0;
 }
 
@@ -451,6 +451,37 @@ p.product-detail__price {
 @media (max-width: 600px) {
   section > article.product__card {
     width: 100%; /* Single card per row on mobile */
+  }
+
+  section.product-detail > figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .product-detail__lightbox-image {
+    width: 100%;
+  }
+
+  nav {
+    flex-direction: column;
+  }
+
+  section.footer__info {
+    flex-direction: column;
+  }
+
+  h1, h2 {
+    margin: 0.4rem 0;
+  }
+
+  .content {
+    padding: 0;
+  }
+
+  .content > header {
+    margin: 0 0.5rem;
   }
 }
 
