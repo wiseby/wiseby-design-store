@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask
+from flask import Flask, redirect, url_for
 import tomllib
 
 
@@ -46,9 +46,11 @@ def create_app(test_config=None):
     from . import images
     app.register_blueprint(images.bp)
 
-    from . import block
-    app.register_blueprint(block.bp)
+    from . import news
+    app.register_blueprint(news.bp)
 
-    app.add_url_rule('/', endpoint='index')
+    @app.route('/')
+    def root():
+        return redirect(url_for('product.index'))
     
     return app
