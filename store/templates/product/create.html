@@ -10,7 +10,7 @@
     <input name="name" id="name" value="{{ request.form['name'] }}" required>
     
     <label for="short_description">Kort Beskrivning</label>
-    <textarea name="short_description" id="short_description">{{ request.form['short_description'] }}</textarea>
+    <input name="short_description" id="short_description" value="{{ request.form['short_description'] }}">
     
     <label for="description">Beskrivning</label>
     <textarea name="description" id="description">{{ request.form['description'] }}</textarea>
